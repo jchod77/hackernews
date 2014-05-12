@@ -1,7 +1,7 @@
 
 <% if session[:id] %>
   <%= link_to "create post", new_post_path %>
-  <%= link_to "logout", session_path, method: :delete, data: {confirm: "Are you sure"} %>
+  <%= link_to "logout", session_path(session[:id]), method: :delete%>
 <% else %>
   <%= link_to "signup", new_user_path %>
   <%= link_to "signin", new_session_path %>

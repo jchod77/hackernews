@@ -3,13 +3,11 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if User.authenticate(user_params)
+    if User.authenticate(params[:username], params[:password])
       @user = User.find_by_username(params[:username])
       session[:id] = @user.id
-      puts "logged in******************************************************************************"
       redirect_to root_path
     else
-      puts "******************************************************************************"
       render 'new'
     end
   end
@@ -17,11 +15,5 @@ class SessionsController < ApplicationController
   def destroy
     session.clear
     redirect_to root_path
-  end
-
-  private
-
-  def user_params
-    params.require(:session).permit(params[:username], params[:password])
   end
 end
