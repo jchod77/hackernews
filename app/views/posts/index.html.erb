@@ -22,5 +22,11 @@
       <% end %>
       (<%= post.url %>)</td>
     </tr>
+    <tr>
+      <td># points</td>
+      <td>by <%= post.user.username %>
+             <%= (post.created_at - Time.now) %> |
+      </td>
+      <td><%= link_to "#{post.comments.count} comments", post_comments_path(post) %></td>
   <% end %>
 </table>
