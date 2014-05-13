@@ -7,9 +7,6 @@
   <%= link_to "signin", new_session_path %>
 <% end %>
 
-
-
-
 <table>
   <% @posts.each_with_index do |post, index| %>
     <tr>
@@ -25,8 +22,9 @@
     <tr>
       <td># points</td>
       <td>by <%= post.user.username %>
-             <%= (post.created_at - Time.now) %> |
+             <%= distance_of_time_in_words(DateTime.now, post.created_at) %> |
       </td>
       <td><%= link_to "#{post.comments.count} comments", post_comments_path(post) %></td>
   <% end %>
 </table>
+
